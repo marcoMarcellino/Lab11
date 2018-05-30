@@ -23,6 +23,7 @@ public class Evento {
 	public EventType getTipo() {
 		return tipo;
 	}
+	
 
 	@Override
 	public int hashCode() {
