@@ -1,8 +1,8 @@
-package it.polito.tdp.bar;
+package it.polito.tdp.bar.model;
 
 public enum EventType {
 
 	GRUPPO_IN,
-	TAVOLO_LIBERO
+	GRUPPO_OUT
 	
 }

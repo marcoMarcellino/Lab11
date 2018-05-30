@@ -2,6 +2,9 @@ package it.polito.tdp.bar;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import it.polito.tdp.bar.model.Model;
+import it.polito.tdp.bar.model.Statistiche;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -9,6 +12,8 @@ import javafx.scene.control.TextArea;
 
 public class BarController {
 
+	Model model;
+	
     @FXML // ResourceBundle that was given to the FXMLLoader
     private ResourceBundle resources;
 
@@ -23,7 +28,14 @@ public class BarController {
 
     @FXML
     void doSimula(ActionEvent event) {
-
+    txtArea.clear();
+    model.simula();
+    Statistiche statistiche= model.getStatistiche();
+    txtArea.appendText("Numero clienti arrivati: "+statistiche.getNumero_totale_clienti()+"\n");
+    txtArea.appendText("Numero soddisfatti: "+statistiche.getNumero_clienti_soddisfatti()+"\n");
+    txtArea.appendText("Numero insoddisfatti: "+statistiche.getNumero_clienti_insoddisfatti()+"\n");
+    	
+    	
     }
 
     @FXML // This method is called by the FXMLLoader when initialization is complete
@@ -32,4 +44,9 @@ public class BarController {
         assert txtArea != null : "fx:id=\"txtArea\" was not injected: check your FXML file 'Untitled'.";
 
     }
+
+	public void setModel(Model model) {
+		this.model = model;
+	}
+    
 }
